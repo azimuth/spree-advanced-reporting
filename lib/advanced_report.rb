@@ -16,6 +16,10 @@ class AdvancedReport
     search = Order.searchlogic(params[:search])
     search.checkout_complete = true
     search.state_does_not_equal('canceled')
+    search.state_does_not_equal('pending')
+    search.state_does_not_equal('picking')
+    search.state_does_not_equal('picked')
+    search.state_does_not_equal('balance_due')
 
     self.orders = search.find(:all)
 
